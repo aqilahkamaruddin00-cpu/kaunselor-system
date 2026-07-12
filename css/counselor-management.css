@@ -1,0 +1,83 @@
+/* Counselor Profile Management Panel Styles */
+.management-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.directory-list-container h4,
+.add-counselor-form-container h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.directory-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.directory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: hsla(var(--hue-primary), 20%, 95%, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.dark-theme .directory-item {
+    background-color: hsla(var(--hue-primary), 20%, 14%, 0.4);
+}
+
+.directory-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.directory-item-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.directory-item-role {
+    font-size: 0.8rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.btn-delete-profile {
+    background: transparent;
+    border: 1px solid var(--crimson);
+    color: var(--crimson);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-delete-profile:hover {
+    background-color: var(--crimson);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .management-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
+

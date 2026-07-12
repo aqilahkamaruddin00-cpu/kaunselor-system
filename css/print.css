@@ -1,0 +1,77 @@
+/* Print Stylesheet for Receipts */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    body * {
+        visibility: hidden;
+    }
+    
+    .bg-blur, .app-header, .app-main, .app-footer {
+        display: none !important;
+    }
+    
+    #confirmationModal, #confirmationModal * {
+        visibility: visible;
+    }
+    
+    #confirmationModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        background: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        display: flex !important;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 !important;
+    }
+    
+    .modal-card {
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        animation: none !important;
+    }
+    
+    .modal-success-icon, .modal-card h2, .modal-desc, .modal-buttons {
+        display: none !important;
+    }
+    
+    .receipt-card {
+        border: 2px solid #333 !important;
+        background: #fff !important;
+        color: #000 !important;
+        width: 100% !important;
+        max-width: 500px !important;
+        margin: 20px auto !important;
+        box-shadow: none !important;
+    }
+    
+    .receipt-row {
+        border-bottom: 1px dashed #666 !important;
+    }
+    
+    .receipt-row .lbl {
+        color: #333 !important;
+    }
+    
+    .receipt-row .val {
+        color: #000 !important;
+    }
+    
+    .receipt-status-alert {
+        border-top: 1px solid #333 !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pengurusan Rujukan dan Temujanji Kaunseling - TVETMARA Besut</title>
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description"
+        content="Sistem Pengurusan Rujukan dan Temujanji Kaunseling TVETMARA Besut untuk rujukan pensyarah/staf, tempahan sulit pelajar dan pengurusan kes kaunselor.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-theme">
+    <!-- Background Elements -->
+    <div class="bg-blur blur-1"></div>
+    <div class="bg-blur blur-2"></div>
+
+    <!-- Navigation Header -->
+    <header class="app-header">
+        <div class="container header-container">
+            <div class="logo-area">
+                <div class="official-logo-group">
+                    <img src="images/MARA.png" alt="MARA logo" class="mara-logo-img header-mara-logo">
+                    <span class="logo-lockup-divider" aria-hidden="true"></span>
+                    <img src="images/logo.png" alt="TVETMARA Besut logo" class="brand-logo-img header-tvet-logo">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title" data-i18n="brand.title">Unit Kaunseling dan Kerjaya</span>
+                </div>
+            </div>
+            <nav class="main-nav" id="mainNav" aria-label="Navigasi utama">
+
+                <a href="#home" class="nav-link active" data-i18n="nav.home">Utama</a>
+
+                <a href="#counselors" class="nav-link" data-i18n="nav.counselors">
+                    Kaunselor
+                </a>
+
+                <a href="#booking" class="nav-link" data-i18n="nav.booking">
+                    Rujukan / Tempahan
+                </a>
+
+                <a href="#resources" class="nav-link" data-i18n="nav.resources">
+                    Sumber
+                </a>
+
+                <button class="portal-toggle-btn" id="portalToggleBtn" onclick="togglePortalMode()">
+
+                    <span class="btn-icon">
+                        ...
+                    </span>
+
+                    <span class="btn-text" data-i18n="nav.portal">
+                        Portal Kaunselor
+                    </span>
+
+                </button>
+
+            </nav>
+            <div class="header-actions">
+                <div class="language-toggle" role="group" aria-label="Pilihan bahasa" data-i18n-aria="language.aria">
+                    <button type="button" class="lang-btn active" data-lang="ms" aria-pressed="true">BM</button>
+                    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+                </div>
+                <button class="theme-toggle" id="themeToggleBtn" aria-label="Tukar tema" data-i18n-aria="theme.aria">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                        stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                        stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Buka menu navigasi" aria-expanded="false"
+                    data-i18n-aria="menu.aria">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+        <!-- Student Mode Container -->
+        <div id="studentView" class="view-container active">
+            <!-- Hero Section -->
+            <section id="home" class="hero-section">
+                <div class="container hero-container">
+                    <div class="hero-content">
+                        <span class="hero-badge">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path
+                                    d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z">
+                                </path>
+                                <path d="M12 8v4l3 2"></path>
+                            </svg>
+                            <span data-i18n="hero.badge">Sokongan • Sulit • Profesional</span>
+                        </span>
+                        <h1 class="hero-title" data-i18n-html="hero.title">Unit Kaunseling dan <span
+                                class="gradient-text">Kerjaya</span></h1>
+                        <p class="hero-description" data-i18n="hero.description">Tempah sesi kaunseling secara sulit
+                            untuk sokongan akademik, kerjaya, emosi dan kebajikan pelajar. Kami sedia membantu anda
+                            mencapai kesejahteraan diri dan potensi terbaik.</p>
+                        <div class="hero-ctas">
+                            <a href="#booking" class="btn btn-primary btn-lg" data-request-type-link="referral">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.4"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"></path>
+                                </svg>
+                                <span data-i18n="hero.primaryCta">Tempah Sesi Kaunseling</span>
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#booking" class="btn btn-secondary btn-lg" data-request-type-link="self">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.4"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21a8 8 0 0 0-16 0"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span data-i18n="hero.secondaryCta">Kenali Kaunselor</span>
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon"><svg viewBox="0 0 24 24" width="22" height="22"
+                                        stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg></span>
+                                <span class="stat-copy"><strong data-i18n="hero.statConfidential">Privasi
+                                        Terjamin</strong><small data-i18n="hero.statConfidentialText">Maklumat anda
+                                        dilindungi</small></span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon"><svg viewBox="0 0 24 24" width="22" height="22"
+                                        stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg></span>
+                                <span class="stat-copy"><strong data-i18n="hero.statResponse">Ikut
+                                        Ketersediaan</strong><small data-i18n="hero.statResponseText">Berdasarkan jadual
+                                        kaunselor</small></span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">24/7</span>
+                                <span class="stat-copy"><strong data-i18n="hero.statOnline">Tempahan 24/7</strong><small
+                                        data-i18n="hero.statOnlineText">Bila-bila masa, di mana sahaja</small></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="system-action-panel">
+                            <article class="system-action-card referral-card">
+                                <span class="action-icon">
+                                    <svg viewBox="0 0 24 24" width="34" height="34" stroke="currentColor"
+                                        stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <path d="M14 2v6h6"></path>
+                                        <path d="M9 13h6"></path>
+                                        <path d="M9 17h4"></path>
+                                    </svg>
+                                </span>
+                                <span class="action-kicker" data-i18n="hero.referralKicker">Untuk Pensyarah / Staf</span>
+                                <h3 data-i18n="hero.referralCardTitle">Hantar Rujukan Pelajar</h3>
+                                <p data-i18n="hero.referralCardDesc">Rujuk pelajar yang memerlukan sokongan kaunseling
+                                    dengan sebab rujukan dan maklumat sokongan.</p>
+                                <a href="#booking" class="btn btn-primary btn-block" data-request-type-link="referral">
+                                    <span data-i18n="hero.primaryCta">Buat Rujukan Kes</span>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
+                                        stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </article>
+                            <article class="system-action-card self-card">
+                                <span class="action-icon green">
+                                    <svg viewBox="0 0 24 24" width="34" height="34" stroke="currentColor"
+                                        stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        <path d="m9 17 2 2 4-4"></path>
+                                    </svg>
+                                </span>
+                                <span class="action-kicker green" data-i18n="hero.selfKicker">Untuk Pelajar</span>
+                                <h3 data-i18n="hero.selfCardTitle">Tempahan Kendiri Sulit</h3>
+                                <p data-i18n="hero.selfCardDesc">Pelajar boleh memohon sesi kaunseling secara terus
+                                    dan sulit tanpa makluman pihak lain.</p>
+                                <a href="#booking" class="btn btn-success btn-block" data-request-type-link="self">
+                                    <span data-i18n="hero.secondaryCta">Tempahan Sulit Pelajar</span>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
+                                        stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                            </article>
+                            <div class="hero-trust-note">
+                                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                <span data-i18n="hero.trustNote">Maklumat adalah sulit dan hanya diakses oleh pihak Unit
+                                    Kaunseling dan Kerjaya.</span>
+                            </div>
+                        </div>
+                        <div class="visual-card main-visual-card">
+                            <img src="images/hero-counseling.png" alt="Sesi kaunseling pelajar bersama kaunselor"
+                                class="hero-scene-img">
+                            <div class="hero-availability-card" id="heroAvailabilityCard">
+                                <div class="hero-availability-head">
+                                    <span class="availability-status-dot" aria-hidden="true"></span>
+                                    <span data-i18n="hero.availabilityTitle">Slot Tersedia</span>
+                                    <strong id="heroAvailabilityCount">0</strong>
+                                </div>
+                                <div class="hero-availability-list" id="heroAvailabilityList">
+                                    <p data-i18n="hero.availabilityLoading">Menyemak ketersediaan...</p>
+                                </div>
+                                <a href="#booking" class="hero-view-slots-btn">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                        stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span data-i18n="hero.viewAllSlots">Lihat Semua Slot</span>
+                                </a>
+                            </div>
+                            <div class="card-quote">
+                                <span class="quote-mark" aria-hidden="true">“</span>
+                                <p id="heroQuoteText" data-i18n="hero.quote">"Anda tidak perlu menghadapi semuanya
+                                    seorang diri."</p>
+                                <span id="heroQuoteBy" data-i18n="hero.quoteBy">- Unit Kaunseling dan Kerjaya</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="support-section">
+                <div class="container">
+                    <div class="section-header compact">
+                        <h2 class="section-title" data-i18n="services.title">Kami Sedia Membantu</h2>
+                        <p class="section-description" data-i18n="services.description">Perkhidmatan kaunseling yang
+                            komprehensif untuk semua pelajar.</p>
+                    </div>
+                    <div class="process-grid">
+                        <article class="process-card">
+                            <h3 data-i18n="process.referralTitle">Rujukan Pensyarah / Staf</h3>
+                            <div class="process-steps">
+                                <div class="process-step"><span>1</span><strong data-i18n="process.referral1">Hantar
+                                        rujukan</strong></div>
+                                <div class="process-step"><span>2</span><strong data-i18n="process.referral2">Kaunselor
+                                        menyemak</strong></div>
+                                <div class="process-step"><span>3</span><strong data-i18n="process.referral3">Sesi
+                                        dijadualkan</strong></div>
+                                <div class="process-step"><span>4</span><strong data-i18n="process.referral4">Tindakan
+                                        susulan</strong></div>
+                            </div>
+                        </article>
+                        <article class="process-card">
+                            <h3 data-i18n="process.selfTitle">Tempahan Kendiri Sulit</h3>
+                            <div class="process-steps">
+                                <div class="process-step"><span>1</span><strong data-i18n="process.self1">Isi
+                                        maklumat</strong></div>
+                                <div class="process-step"><span>2</span><strong data-i18n="process.self2">Pilih
+                                        slot</strong></div>
+                                <div class="process-step"><span>3</span><strong data-i18n="process.self3">Kaunselor
+                                        sahkan</strong></div>
+                                <div class="process-step"><span>4</span><strong data-i18n="process.self4">Sesi
+                                        dijalankan</strong></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="service-grid">
+                        <article class="service-card" data-session-type="Academic" tabindex="0">
+                            <div class="service-icon blue"><svg viewBox="0 0 24 24" width="24" height="24"
+                                    stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="m22 10-10-5-10 5 10 5 10-5z"></path>
+                                    <path d="M6 12v5c3 2 9 2 12 0v-5"></path>
+                                </svg></div>
+                            <div class="service-copy">
+                                <h3 data-i18n="services.academicTitle">Sokongan Akademik</h3>
+                                <p data-i18n="services.academicDesc">Bimbingan pembelajaran, motivasi dan pengurusan
+                                    tekanan akademik.</p>
+                                <div class="service-meta">
+                                    <span data-i18n="services.duration45">45-60 minit</span>
+                                    <span data-i18n="services.academicSuitable">Pelajar dengan isu pembelajaran</span>
+                                </div>
+                                <a href="#booking" class="service-booking-link" data-session-type="Academic"
+                                    data-i18n="services.learnMore">Ketahui lanjut</a>
+                            </div>
+                        </article>
+                        <article class="service-card" data-session-type="Career" tabindex="0">
+                            <div class="service-icon purple"><svg viewBox="0 0 24 24" width="24" height="24"
+                                    stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+                                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path>
+                                </svg></div>
+                            <div class="service-copy">
+                                <h3 data-i18n="services.careerTitle">Bimbingan Kerjaya</h3>
+                                <p data-i18n="services.careerDesc">Perancangan kerjaya, peluang pekerjaan dan
+                                    pembangunan diri.</p>
+                                <div class="service-meta">
+                                    <span data-i18n="services.duration45">45-60 minit</span>
+                                    <span data-i18n="services.careerSuitable">Pelajar yang merancang kerjaya</span>
+                                </div>
+                                <a href="#booking" class="service-booking-link" data-session-type="Career"
+                                    data-i18n="services.learnMore">Ketahui lanjut</a>
+                            </div>
+                        </article>
+                        <article class="service-card" data-session-type="Personal" tabindex="0">
+                            <div class="service-icon red"><svg viewBox="0 0 24 24" width="24" height="24"
+                                    stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z">
+                                    </path>
+                                </svg></div>
+                            <div class="service-copy">
+                                <h3 data-i18n="services.emotionTitle">Kesihatan Emosi</h3>
+                                <p data-i18n="services.emotionDesc">Sokongan untuk tekanan, emosi, keyakinan diri dan
+                                    kesejahteraan.</p>
+                                <div class="service-meta">
+                                    <span data-i18n="services.duration45">45-60 minit</span>
+                                    <span data-i18n="services.emotionSuitable">Pelajar yang perlukan sokongan
+                                        emosi</span>
+                                </div>
+                                <a href="#booking" class="service-booking-link" data-session-type="Personal"
+                                    data-i18n="services.learnMore">Ketahui lanjut</a>
+                            </div>
+                        </article>
+                        <article class="service-card" data-session-type="Financial" tabindex="0">
+                            <div class="service-icon green"><svg viewBox="0 0 24 24" width="24" height="24"
+                                    stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg></div>
+                            <div class="service-copy">
+                                <h3 data-i18n="services.welfareTitle">Kebajikan Pelajar</h3>
+                                <p data-i18n="services.welfareDesc">Bantuan kebajikan, kewangan dan hal-hal peribadi
+                                    pelajar.</p>
+                                <div class="service-meta">
+                                    <span data-i18n="services.duration30">30-45 minit</span>
+                                    <span data-i18n="services.welfareSuitable">Pelajar dengan isu kebajikan</span>
+                                </div>
+                                <a href="#booking" class="service-booking-link" data-session-type="Financial"
+                                    data-i18n="services.learnMore">Ketahui lanjut</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Counselor Section -->
+            <section id="counselors" class="counselors-section">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-subtitle" data-i18n="counselors.subtitle">Pasukan Kami</span>
+                        <h2 class="section-title" data-i18n="counselors.title">Kaunselor Unit Kaunseling dan Kerjaya
+                        </h2>
+                        <p class="section-description" data-i18n="counselors.description">Pegawai yang bersedia
+                            mendengar, membimbing dan menyokong perjalanan pembelajaran serta kerjaya pelajar TVETMARA
+                            Besut.</p>
+                    </div>
+                    <div class="counselors-grid" id="counselorsGrid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Booking Section -->
+            <section id="booking" class="booking-section">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-subtitle" data-i18n="booking.subtitle">Rujukan & Temujanji</span>
+                        <h2 class="section-title" data-i18n="booking.title">Sistem Pengurusan Rujukan dan Temujanji
+                            Kaunseling</h2>
+                        <p class="section-description" data-i18n="booking.description">Mulakan dengan rujukan
+                            pensyarah/staf atau tempahan kendiri yang sulit. Kalendar akan memaparkan slot berdasarkan
+                            kaunselor yang dipilih.</p>
+                    </div>
+
+                    <div class="booking-guide" role="note">
+                        <div class="booking-guide-label" data-i18n="booking.guideTitle">Cara guna sistem</div>
+                        <ol>
+                            <li data-i18n="booking.guideStep1">Pilih jenis permohonan: rujukan pensyarah/staf atau
+                                tempahan kendiri sulit.
+                            </li>
+                            <li data-i18n="booking.guideStep2">Pilih kaunselor dahulu supaya kalendar hanya memaparkan
+                                slot yang tersedia untuk kaunselor tersebut.</li>
+                            <li data-i18n="booking.guideStep3">Kaunselor akan menyemak kes, menetapkan sesi individu
+                                atau berkelompok, dan memaklumkan status kepada pelajar.</li>
+                        </ol>
+                    </div>
+
+                    <div class="booking-wrapper">
+                        <!-- Step 2: Calendar Selection -->
+                        <div class="booking-card calendar-picker-card">
+                            <div class="card-header-accented">
+                                <h3 data-i18n="booking.step2">2. Pilih Tarikh & Masa</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="calendar-controls">
+                                    <button class="cal-nav-btn" id="prevMonthBtn" aria-label="Bulan sebelumnya"
+                                        data-i18n-aria="calendar.prev">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="15 18 9 12 15 6"></polyline>
+                                        </svg>
+                                    </button>
+                                    <h4 class="current-month-year" id="currentMonthYear">July 2026</h4>
+                                    <button class="cal-nav-btn" id="nextMonthBtn" aria-label="Bulan seterusnya"
+                                        data-i18n-aria="calendar.next">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="calendar-grid">
+                                    <div class="weekday-lbl">Mon</div>
+                                    <div class="weekday-lbl">Tue</div>
+                                    <div class="weekday-lbl">Wed</div>
+                                    <div class="weekday-lbl">Thu</div>
+                                    <div class="weekday-lbl">Fri</div>
+                                    <div class="weekday-lbl">Sat</div>
+                                    <div class="weekday-lbl">Sun</div>
+                                </div>
+                                <div class="calendar-days" id="calendarDays">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                                <div class="calendar-legend">
+                                    <span class="legend-item"><span class="color-dot available"></span> <span
+                                            data-i18n="calendar.available">Tersedia</span></span>
+                                    <span class="legend-item"><span class="color-dot selected"></span> <span
+                                            data-i18n="calendar.selected">Dipilih</span></span>
+                                    <span class="legend-item"><span class="color-dot unavailable"></span> <span
+                                            data-i18n="calendar.unavailable">Tidak tersedia</span></span>
+                                </div>
+
+                                <div class="slots-container">
+                                    <h5 data-i18n="booking.slotTitle">Pilih Slot Masa</h5>
+                                    <div class="time-slots" id="timeSlots">
+                                        <p class="select-date-prompt" data-i18n="booking.chooseCounselorFirst">Sila
+                                            pilih kaunselor pilihan dahulu untuk semak tarikh dan slot yang tersedia.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="booking-summary-widget" id="bookingSummaryWidget">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                        stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                        class="summary-icon">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span id="selectedDateTimeText" data-i18n="booking.noSelection">Belum ada
+                                        tarikh/masa dipilih.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 1: Student Information -->
+                        <div class="booking-card details-form-card">
+                            <div class="card-header-accented">
+                                <h3 data-i18n="booking.step1">1. Maklumat Permohonan</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-stepper" aria-label="Langkah permohonan">
+                                    <span class="active"><b>1</b><small data-i18n="form.stepApplicant">Jenis &
+                                            pemohon</small></span>
+                                    <span><b>2</b><small data-i18n="form.stepStudent">Maklumat pelajar</small></span>
+                                    <span><b>3</b><small data-i18n="form.stepSession">Sesi & slot</small></span>
+                                    <span><b>4</b><small data-i18n="form.stepSubmit">Hantar</small></span>
+                                </div>
+                                <form id="appointmentForm" class="appointment-form" onsubmit="handleFormSubmit(event)">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label data-i18n="form.requestType">Jenis Permohonan</label>
+                                            <div class="request-type-switch" role="radiogroup"
+                                                aria-label="Jenis Permohonan">
+                                                <label class="request-type-option active">
+                                                    <input type="radio" name="requestType" value="referral" checked>
+                                                    <span data-i18n="form.requestReferral">Rujukan Pensyarah / Staf</span>
+                                                </label>
+                                                <label class="request-type-option">
+                                                    <input type="radio" name="requestType" value="self">
+                                                    <span data-i18n="form.requestSelf">Tempahan Kendiri Sulit</span>
+                                                </label>
+                                            </div>
+                                            <small class="request-type-note" id="requestTypeNote"
+                                                data-i18n="form.referralFirstNote">Rujukan pensyarah/staf ialah aliran
+                                                utama. Pelajar masih boleh memilih tempahan kendiri yang sulit.</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="studentName" data-i18n-html="form.fullName">Nama Penuh <span
+                                                    class="required">*</span></label>
+                                            <input type="text" id="studentName" placeholder="cth. Aqilah Husna"
+                                                data-i18n-placeholder="form.fullNamePlaceholder" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row two-cols">
+                                        <div class="form-group">
+                                            <label for="studentId" data-i18n-html="form.studentId">No. Pelajar <span
+                                                    class="required">*</span></label>
+                                            <input type="text" id="studentId" placeholder="cth. IKM240199"
+                                                data-i18n-placeholder="form.studentIdPlaceholder" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="counselorSelect"
+                                                data-i18n-html="form.preferredCounselor">Kaunselor Pilihan <span
+                                                    class="required">*</span></label>
+                                            <select id="counselorSelect" required>
+                                                <!-- Populated dynamically via JS -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row two-cols">
+                                        <div class="form-group">
+                                            <label for="studentProgram" data-i18n-html="form.program">Program / Kursus
+                                                <span class="required">*</span></label>
+                                            <select id="studentProgram" required>
+                                                <option value="" disabled selected data-i18n="form.selectProgram">Pilih
+                                                    program / kursus</option>
+                                                <option value="DCG - DIPLOMA KOMPETENSI ELEKTRIK">DCG - DIPLOMA
+                                                    KOMPETENSI ELEKTRIK</option>
+                                                <option value="DFK - DIPLOMA TEKNOLOGI KOMPUTER (KOMPUTASI AWAN)">DFK -
+                                                    DIPLOMA TEKNOLOGI KOMPUTER (KOMPUTASI AWAN)</option>
+                                                <option value="DGA - DIPLOMA TEKNOLOGI AUTOMOTIF">DGA - DIPLOMA
+                                                    TEKNOLOGI AUTOMOTIF</option>
+                                                <option value="ITW - DIPLOMA KOMPETENSI KIMPALAN">ITW - DIPLOMA
+                                                    KOMPETENSI KIMPALAN</option>
+                                                <option value="PPU - DIPLOMA TEKNOLOGI PENYEJUKAN & PENYAMANAN UDARA">
+                                                    PPU - DIPLOMA TEKNOLOGI PENYEJUKAN & PENYAMANAN UDARA</option>
+                                                <option value="SLR - SIJIL TEKNOLOGI KEJURUTERAAN MEKANIKAL">SLR -
+                                                    SIJIL TEKNOLOGI KEJURUTERAAN MEKANIKAL</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="studentSem" data-i18n-html="form.semester">Semester <span
+                                                    class="required">*</span></label>
+                                            <select id="studentSem" required>
+                                                <option value="" disabled selected data-i18n="form.selectSem">Pilih
+                                                    Semester</option>
+                                                <option value="Sem 1" data-i18n="form.sem1">Semester 1</option>
+                                                <option value="Sem 2" data-i18n="form.sem2">Semester 2</option>
+                                                <option value="Sem 3" data-i18n="form.sem3">Semester 3</option>
+                                                <option value="Sem 4" data-i18n="form.sem4">Semester 4</option>
+                                                <option value="Sem 5" data-i18n="form.sem5">Semester 5</option>
+                                                <option value="Sem 6" data-i18n="form.sem6">Semester 6</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="referral-fields" id="referralFields" hidden>
+                                        <div class="referral-section-title" data-i18n="form.referralInfo">Maklumat
+                                            Rujukan</div>
+                                        <div class="form-row two-cols">
+                                            <div class="form-group">
+                                                <label for="referrerName" data-i18n-html="form.referrerName">Nama
+                                                    Perujuk <span class="required">*</span></label>
+                                                <input type="text" id="referrerName" placeholder="cth. Puan Siti Aminah"
+                                                    data-i18n-placeholder="form.referrerNamePlaceholder"
+                                                    data-referral-required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="referrerPosition"
+                                                    data-i18n-html="form.referrerPosition">Jawatan Perujuk <span
+                                                        class="required">*</span></label>
+                                                <input type="text" id="referrerPosition"
+                                                    placeholder="cth. Pensyarah / Pegawai HEP / Warden"
+                                                    data-i18n-placeholder="form.referrerPositionPlaceholder"
+                                                    data-referral-required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row two-cols">
+                                            <div class="form-group">
+                                                <label for="referrerDepartment"
+                                                    data-i18n-html="form.referrerDepartment">Jabatan / Program <span
+                                                        class="required">*</span></label>
+                                                <input type="text" id="referrerDepartment" placeholder="cth. DFK / HEP / Asrama"
+                                                    data-i18n-placeholder="form.referrerDepartmentPlaceholder"
+                                                    data-referral-required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="referralSource" data-i18n-html="form.referralSource">Kategori
+                                                    Rujukan <span class="required">*</span></label>
+                                                <select id="referralSource" data-referral-required>
+                                                    <option value="" disabled selected
+                                                        data-i18n="form.selectReferralSource">Pilih kategori rujukan
+                                                    </option>
+                                                    <option value="Lecturer" data-i18n="referralSource.Lecturer">Rujukan
+                                                        Pensyarah</option>
+                                                    <option value="HEP" data-i18n="referralSource.HEP">Rujukan HEP
+                                                    </option>
+                                                    <option value="Warden" data-i18n="referralSource.Warden">Rujukan
+                                                        Warden</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row two-cols">
+                                            <div class="form-group">
+                                                <label for="referralSessionMode"
+                                                    data-i18n-html="form.referralSessionMode">Cadangan Jenis Sesi
+                                                    (Pilihan)</label>
+                                                <select id="referralSessionMode">
+                                                    <option value="PendingDecision" selected
+                                                        data-i18n="form.counselorDecides">Kaunselor tentukan</option>
+                                                    <option value="Individual" data-i18n="sessionMode.Individual">Individu
+                                                    </option>
+                                                    <option value="Group" data-i18n="sessionMode.Group">Berkelompok
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="referralPriority" data-i18n-html="form.referralPriority">Tahap
+                                                    Keutamaan <span class="required">*</span></label>
+                                                <select id="referralPriority" data-referral-required>
+                                                    <option value="Normal" data-i18n="priority.Normal">Biasa</option>
+                                                    <option value="Urgent" data-i18n="priority.Urgent">Segera</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="referralReason" data-i18n-html="form.referralReason">Sebab
+                                                Rujukan <span class="required">*</span></label>
+                                            <textarea id="referralReason" rows="3"
+                                                placeholder="Nyatakan sebab rujukan secara ringkas."
+                                                data-i18n-placeholder="form.referralReasonPlaceholder"
+                                                data-referral-required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="referralAttachment" data-i18n="form.referralAttachment">Lampiran
+                                                Bahan</label>
+                                            <input type="file" id="referralAttachment"
+                                                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                            <small class="field-hint" data-i18n="form.attachmentHint">Lampiran disimpan
+                                                sebagai nama fail untuk demo ini.</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-row two-cols">
+                                        <div class="form-group">
+                                            <label for="studentPhone" data-i18n-html="form.phone">No. Telefon <span
+                                                    class="required">*</span></label>
+                                            <input type="tel" id="studentPhone" placeholder="cth. 0123456789"
+                                                data-i18n-placeholder="form.phonePlaceholder" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sessionType" data-i18n-html="form.sessionType">Jenis Konsultasi
+                                                <span class="required">*</span></label>
+                                            <select id="sessionType" required>
+                                                <option value="" disabled selected data-i18n="form.selectConcern">Pilih
+                                                    bidang bantuan</option>
+                                                <option value="Academic" data-i18n="sessionType.Academic">Kaunseling
+                                                    Akademik</option>
+                                                <option value="Career" data-i18n="sessionType.Career">Bimbingan Kerjaya
+                                                    & Kebolehpasaran</option>
+                                                <option value="Personal" data-i18n="sessionType.Personal">Sokongan
+                                                    Peribadi / Emosi</option>
+                                                <option value="Financial" data-i18n="sessionType.Financial">Bantuan
+                                                    Kewangan & Kebajikan</option>
+                                                <option value="Other" data-i18n="sessionType.Other">Kaunseling Lain
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sessionReason" data-i18n="form.reason">Nyatakan Ringkas Keperluan
+                                            Anda (Pilihan)</label>
+                                        <textarea id="sessionReason" rows="3"
+                                            placeholder="Tulis secara ringkas perkara yang ingin dibincangkan. Maklumat adalah sulit."
+                                            data-i18n-placeholder="form.reasonPlaceholder"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block submit-booking-btn"
+                                        id="submitBookingBtn" disabled>
+                                        <span data-i18n="form.submit">Hantar Permohonan Temujanji</span>
+                                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-card student-status-card">
+                        <div class="card-header-accented">
+                            <h3 data-i18n="statusChecker.title">Semak Status Tempahan</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="section-description status-checker-desc" data-i18n="statusChecker.desc">Masukkan
+                                rujukan tiket dan nombor pelajar untuk semak sama ada tempahan masih menunggu,
+                                diluluskan, dibatalkan atau dijadualkan semula.</p>
+                            <div class="status-checker-grid">
+                                <div class="form-group">
+                                    <label for="statusTicketRef" data-i18n="statusChecker.ticket">Rujukan Tiket</label>
+                                    <input type="text" id="statusTicketRef" placeholder="cth. T-1234"
+                                        data-i18n-placeholder="statusChecker.ticketPlaceholder">
+                                </div>
+                                <div class="form-group">
+                                    <label for="statusStudentId" data-i18n="statusChecker.studentId">No. Pelajar</label>
+                                    <input type="text" id="statusStudentId" placeholder="cth. DFK230717"
+                                        data-i18n-placeholder="statusChecker.studentIdPlaceholder">
+                                </div>
+                                <button type="button" class="btn btn-secondary" onclick="checkStudentBookingStatus()"
+                                    data-i18n="statusChecker.button">Semak Status</button>
+                            </div>
+                            <div class="status-result-card" id="studentStatusResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ & Resources Section -->
+            <section id="resources" class="resources-section">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-subtitle" data-i18n="resources.subtitle">Sokongan Tambahan</span>
+                        <h2 class="section-title" data-i18n="resources.title">Soalan Lazim & Sumber</h2>
+                        <p class="section-description" data-i18n="resources.description">Maklumat ringkas dan panduan
+                            awal untuk membantu pelajar sebelum atau selepas sesi kaunseling.</p>
+                    </div>
+
+                    <div class="resources-grid">
+                        <div class="faq-accordion-card">
+                            <h3 data-i18n="faq.title">Soalan Lazim</h3>
+                            <div class="accordion-list">
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                        <span data-i18n="faq.q1">Adakah maklumat saya dirahsiakan?</span>
+                                        <svg class="chevron-icon" viewBox="0 0 24 24" width="18" height="18"
+                                            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p data-i18n="faq.a1">Ya. Semua topik perbincangan, catatan peribadi dan
+                                            maklumat yang dikongsi dalam sesi kaunseling adalah sulit, kecuali jika
+                                            terdapat risiko keselamatan kepada diri sendiri atau orang lain.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                        <span data-i18n="faq.q2">Berapa lama tempoh setiap sesi?</span>
+                                        <svg class="chevron-icon" viewBox="0 0 24 24" width="18" height="18"
+                                            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p data-i18n="faq.a2">Kebiasaannya sesi mengambil masa 45 hingga 60 minit.
+                                            Tempoh boleh disesuaikan mengikut keperluan dan situasi anda.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                                        <span data-i18n="faq.q3">Apa yang perlu dibuat jika berlaku kecemasan?</span>
+                                        <svg class="chevron-icon" viewBox="0 0 24 24" width="18" height="18"
+                                            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p data-i18n="faq.a3">Jika anda atau rakan berada dalam krisis segera, hubungi
+                                            warden kampus, Talian Kasih 15999, atau datang terus ke pejabat Unit
+                                            Kaunseling dan Kerjaya semasa waktu operasi.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quick-resources-card">
+                            <h3 data-i18n="resources.guidesTitle">Panduan Kesihatan Mental & TVET</h3>
+                            <div class="resource-links-list">
+                                <a href="#" class="resource-link-item" onclick="alert(getResourceAlert('stress'))">
+                                    <div class="link-icon">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M12 19V6a5 5 0 0 1-5-5H2v18a2 2 0 0 0 2 2h8zm0 0V6a5 5 0 0 2 5-5h5v18a2 2 0 0 1-2 2h-8z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="link-details">
+                                        <h4 data-i18n="resources.stressTitle">Panduan Mengurus Stres Pelajar TVET</h4>
+                                        <p data-i18n="resources.stressDesc">Teknik ringkas untuk mengimbangi bengkel
+                                            amali, tugasan dan akademik.</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="resource-link-item" onclick="alert(getResourceAlert('career'))">
+                                    <div class="link-icon">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="link-details">
+                                        <h4 data-i18n="resources.careerTitle">Senarai Semak Persediaan Kerjaya</h4>
+                                        <p data-i18n="resources.careerDesc">Sediakan resume, latihan temuduga dan carian
+                                            latihan industri.</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="resource-link-item" onclick="alert(getResourceAlert('mindfulness'))">
+                                    <div class="link-icon">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+                                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                            <line x1="12" y1="19" x2="12" y2="22"></line>
+                                        </svg>
+                                    </div>
+                                    <div class="link-details">
+                                        <h4 data-i18n="resources.mindTitle">Latihan Pernafasan 10 Minit</h4>
+                                        <p data-i18n="resources.mindDesc">Amalan ringkas untuk menenangkan diri sebelum
+                                            penilaian atau pembentangan.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Counselor View / Dashboard -->
+        <div id="counselorView" class="view-container">
+            <section class="dashboard-section">
+                <div class="container">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title-area">
+                            <h2 class="dash-title" data-i18n="dashboard.title">Portal Pentadbiran Kaunselor</h2>
+                            <p class="dash-subtitle" data-i18n="dashboard.subtitle">Semak, kemas kini dan urus tempahan
+                                temujanji pelajar.</p>
+                        </div>
+                        <div class="dashboard-actions">
+                            <div class="portal-badge" data-i18n="dashboard.adminMode">MOD ADMIN</div>
+                            <button class="btn btn-secondary btn-sm" onclick="exitPortalMode()">
+                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                                <span data-i18n="dashboard.exit">Keluar Portal</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Stats Row -->
+                    <div class="dashboard-stats-grid">
+                        <div class="dash-stat-card">
+                            <div class="stat-icon-wrapper blue">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-body">
+                                <span class="stat-number" id="statsTotal">0</span>
+                                <span class="stat-label" data-i18n="dashboard.total">Jumlah Tempahan</span>
+                            </div>
+                        </div>
+                        <div class="dash-stat-card">
+                            <div class="stat-icon-wrapper orange">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-body">
+                                <span class="stat-number" id="statsPending">0</span>
+                                <span class="stat-label" data-i18n="dashboard.pending">Menunggu Semakan</span>
+                            </div>
+                        </div>
+                        <div class="dash-stat-card">
+                            <div class="stat-icon-wrapper green">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-body">
+                                <span class="stat-number" id="statsApproved">0</span>
+                                <span class="stat-label" data-i18n="dashboard.approved">Temujanji Diluluskan</span>
+                            </div>
+                        </div>
+                        <div class="dash-stat-card">
+                            <div class="stat-icon-wrapper blue">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <path d="M14 2v6h6"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-body">
+                                <span class="stat-number" id="statsReferral">0</span>
+                                <span class="stat-label" data-i18n="dashboard.referralCases">Kes Rujukan</span>
+                            </div>
+                        </div>
+                        <div class="dash-stat-card">
+                            <div class="stat-icon-wrapper green">
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-body">
+                                <span class="stat-number" id="statsSelfBooking">0</span>
+                                <span class="stat-label" data-i18n="dashboard.selfBookings">Tempahan Sulit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portal-utility-bar">
+                        <div class="portal-alert-card" id="counselorAlertCard">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                        <div class="portal-download-card">
+                            <div>
+                                <strong data-i18n="dashboard.downloadTitle">Muat turun data tempahan</strong>
+                                <p data-i18n="dashboard.downloadDesc">Simpan salinan data tempahan sebagai CSV untuk
+                                    rekod unit.</p>
+                            </div>
+                            <div class="portal-download-actions">
+                                <button type="button" class="btn btn-secondary btn-sm"
+                                    onclick="downloadCurrentCounselorAppointments()"
+                                    data-i18n="download.myClients">Muat Turun Klien Saya</button>
+                                <button type="button" class="btn btn-outline btn-sm" onclick="downloadAllAppointments()"
+                                    data-i18n="download.allBookings">Muat Turun Semua Tempahan</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-card availability-card">
+                        <div class="card-header-accented flex-header">
+                            <div>
+                                <h3 data-i18n="availability.title">Ketersediaan Kaunselor</h3>
+                                <p data-i18n="availability.description">Pilih kaunselor, kemudian klik tarikh yang
+                                    kaunselor tidak dapat jalankan sesi. Tarikh tersebut akan ditutup dalam kalendar
+                                    pelajar.</p>
+                            </div>
+                        </div>
+                        <div class="card-body availability-layout">
+                            <div class="availability-controls">
+                                <div class="counselor-session-card" id="currentCounselorCard">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="availabilityCounselorSelect"
+                                        data-i18n="availability.counselor">Kaunselor</label>
+                                    <select id="availabilityCounselorSelect">
+                                        <!-- Populated dynamically via JS -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="minNoticeHours" data-i18n="availability.minNotice">Notis Minimum Sebelum
+                                        Sesi (jam)</label>
+                                    <input type="number" id="minNoticeHours" min="1" max="168" step="1" value="24">
+                                    <small class="field-hint" data-i18n="availability.minNoticeHint">Contoh: 24 jam
+                                        bermaksud pelajar tidak boleh tempah slot terlalu mengejut seperti pagi ini
+                                        untuk
+                                        sesi hari yang sama.</small>
+                                </div>
+                                <div class="availability-legend">
+                                    <span><i class="availability-dot available"></i><span
+                                            data-i18n="availability.available">Boleh sesi</span></span>
+                                    <span><i class="availability-dot unavailable"></i><span
+                                            data-i18n="availability.unavailable">Tidak boleh sesi</span></span>
+                                    <span><i class="availability-dot limited"></i><span
+                                            data-i18n="availability.tooSoonShort">Terlalu awal</span></span>
+                                </div>
+                                <div class="availability-slot-editor" id="availabilitySlotEditor">
+                                    <div class="slot-editor-header">
+                                        <div>
+                                            <span class="slot-editor-kicker" data-i18n="availability.slotTitle">Slot masa
+                                                untuk tarikh dipilih</span>
+                                            <strong id="availabilitySelectedDate" data-i18n="availability.noDate">Tiada
+                                                tarikh dipilih</strong>
+                                        </div>
+                                    </div>
+                                    <p class="field-hint" id="availabilitySlotHint"
+                                        data-i18n="availability.selectDate">Klik satu tarikh pada kalendar untuk urus
+                                        slot masa.</p>
+                                    <div class="availability-time-slots" id="availabilityTimeSlots"></div>
+                                    <div class="availability-slot-actions">
+                                        <button type="button" class="btn btn-outline btn-sm"
+                                            id="openAllSlotsBtn" data-i18n="availability.openAll">Buka semua slot</button>
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            id="closeAllSlotsBtn" data-i18n="availability.closeAll">Tutup semua slot</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="availability-calendar-panel">
+                                <div class="calendar-controls">
+                                    <button class="cal-nav-btn" id="availabilityPrevMonthBtn" type="button"
+                                        aria-label="Bulan sebelumnya" data-i18n-aria="availability.prev">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                            stroke-width="2.5" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="15 18 9 12 15 6"></polyline>
+                                        </svg>
+                                    </button>
+                                    <h4 class="current-month-year" id="availabilityMonthYear">Julai 2026</h4>
+                                    <button class="cal-nav-btn" id="availabilityNextMonthBtn" type="button"
+                                        aria-label="Bulan seterusnya" data-i18n-aria="availability.next">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                            stroke-width="2.5" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="availability-weekdays">
+                                    <span data-i18n="calendar.sun">Aha</span><span
+                                        data-i18n="calendar.mon">Isn</span><span
+                                        data-i18n="calendar.tue">Sel</span><span
+                                        data-i18n="calendar.wed">Rab</span><span
+                                        data-i18n="calendar.thu">Kha</span><span
+                                        data-i18n="calendar.fri">Jum</span><span data-i18n="calendar.sat">Sab</span>
+                                </div>
+                                <div class="availability-days" id="availabilityCalendarDays">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                                <p class="availability-status" id="availabilityStatus"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Workspace -->
+                    <div class="dashboard-workspace">
+                        <!-- Appointments Table -->
+                        <div class="booking-card appointments-table-card">
+                            <div class="card-header-accented flex-header">
+                                <div>
+                                    <h3 data-i18n="dashboard.appointments">Senarai Temujanji</h3>
+                                </div>
+                                <div class="table-tools">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        onclick="downloadCurrentCounselorAppointments()"
+                                        data-i18n="download.myClients">Muat Turun Klien Saya</button>
+                                    <div class="table-filters">
+                                        <select id="filterStatus" onchange="filterAppointments()">
+                                            <option value="all" data-i18n="dashboard.allStatus">Semua Status</option>
+                                            <option value="Pending" data-i18n="status.Pending">Menunggu</option>
+                                            <option value="Approved" data-i18n="status.Approved">Diluluskan</option>
+                                            <option value="Cancelled" data-i18n="status.Cancelled">Dibatalkan</option>
+                                        </select>
+                                        <select id="filterCounselor" onchange="filterAppointments()">
+                                            <!-- Populated dynamically via JS -->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body scrollable-table-container">
+                                <table class="appointments-table" id="appointmentsTable">
+                                    <thead>
+                                        <tr>
+                                            <th data-i18n="table.dateTime">Tarikh & Masa</th>
+                                            <th data-i18n="table.student">Maklumat Pelajar</th>
+                                            <th data-i18n="table.counselor">Kaunselor</th>
+                                            <th data-i18n="table.typeReason">Jenis & Sebab</th>
+                                            <th data-i18n="table.status">Status</th>
+                                            <th data-i18n="table.actions">Tindakan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="appointmentsTableBody">
+                                        <!-- Populated dynamically via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="booking-card general-appointments-card" style="margin-top: 32px;">
+                            <div class="card-header-accented flex-header">
+                                <div>
+                                    <h3 data-i18n="dashboard.generalAppointments">Senarai Umum Tempahan Pelajar</h3>
+                                    <p data-i18n="dashboard.generalAppointmentsDesc">Paparan ringkas semua tempahan
+                                        untuk rujukan bersama. Tindakan hanya boleh dibuat dalam senarai temujanji akaun
+                                        sendiri.</p>
+                                </div>
+                                <button type="button" class="btn btn-secondary btn-sm"
+                                    onclick="downloadAllAppointments()" data-i18n="download.allBookings">Muat Turun Semua
+                                    Tempahan</button>
+                            </div>
+                            <div class="card-body scrollable-table-container">
+                                <table class="appointments-table general-appointments-table">
+                                    <thead>
+                                        <tr>
+                                            <th data-i18n="table.dateTime">Tarikh & Masa</th>
+                                            <th data-i18n="table.student">Maklumat Pelajar</th>
+                                            <th data-i18n="table.counselor">Kaunselor</th>
+                                            <th data-i18n="table.status">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="generalAppointmentsTableBody">
+                                        <!-- Populated dynamically via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Counselor Management Panel -->
+                        <div class="booking-card counselor-management-card" style="margin-top: 32px;">
+                            <div class="card-header-accented">
+                                <h3 data-i18n="directory.title">Pengurusan Direktori Kaunselor</h3>
+                            </div>
+                            <div class="card-body management-layout">
+                                <!-- Counselor Directory List -->
+                                <div class="directory-list-container">
+                                    <h4 data-i18n="directory.active">Kaunselor / Pelatih Aktif</h4>
+                                    <div class="directory-items" id="directoryItems">
+                                        <!-- Populated dynamically via JS -->
+                                    </div>
+                                </div>
+
+                                <!-- Add New Counselor Form -->
+                                <div class="add-counselor-form-container">
+                                    <h4 data-i18n="directory.addProfile">Tambah Profil Baharu</h4>
+                                    <form id="addCounselorForm" onsubmit="handleAddCounselorSubmit(event)">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="newCounselorName" data-i18n-html="directory.fullName">Nama
+                                                    Penuh <span class="required">*</span></label>
+                                                <input type="text" id="newCounselorName"
+                                                    placeholder="cth. Cik Nor Shazwani binti Rosli"
+                                                    data-i18n-placeholder="directory.fullNamePlaceholder" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row two-cols">
+                                            <div class="form-group">
+                                                <label for="newCounselorRole" data-i18n-html="directory.role">Peranan /
+                                                    Kelayakan <span class="required">*</span></label>
+                                                <input type="text" id="newCounselorRole"
+                                                    placeholder="cth. Kaunselor Pelatih Berdaftar (KB, PA)"
+                                                    data-i18n-placeholder="directory.rolePlaceholder" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="newCounselorBadge" data-i18n-html="directory.badge">Label
+                                                    Lencana <span class="required">*</span></label>
+                                                <input type="text" id="newCounselorBadge"
+                                                    placeholder="cth. Kaunselor Pelatih"
+                                                    data-i18n-placeholder="directory.badgePlaceholder" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="newCounselorSpecialties"
+                                                    data-i18n-html="directory.specialties">Kepakaran (asingkan dengan
+                                                    koma) <span class="required">*</span></label>
+                                                <input type="text" id="newCounselorSpecialties"
+                                                    placeholder="cth. Stres Peperiksaan, Motivasi Belajar, Hala Tuju Kerjaya"
+                                                    data-i18n-placeholder="directory.specialtiesPlaceholder" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="newCounselorScopes" data-i18n-html="directory.scopes">Skop
+                                                    Tugas / Perkhidmatan (asingkan dengan koma) <span
+                                                        class="required">*</span></label>
+                                                <input type="text" id="newCounselorScopes"
+                                                    placeholder="cth. Kaunseling Individu, Kaunseling Kelompok, Akademik"
+                                                    data-i18n-placeholder="directory.scopesPlaceholder" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="newCounselorBio" data-i18n-html="directory.bio">Biografi
+                                                    Ringkas <span class="required">*</span></label>
+                                                <textarea id="newCounselorBio" rows="3"
+                                                    placeholder="Nyatakan kelayakan, bidang kepakaran dan latar belakang kaunselor..."
+                                                    data-i18n-placeholder="directory.bioPlaceholder"
+                                                    required></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" style="margin-top: 8px;">
+                                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor"
+                                                stroke-width="2.5" fill="none" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                            <span data-i18n="directory.submit">Tambah Profil Kaunselor</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Booking Confirmation Modal / Overlay -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal-card success-modal-card">
+            <div class="modal-success-icon">
+                <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2.5" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h2 data-i18n="modal.successTitle">Permohonan Temujanji Berjaya Dihantar</h2>
+            <p class="modal-desc" data-i18n="modal.successDesc">Terima kasih. Permohonan anda telah direkodkan dan
+                sedang menunggu pengesahan kaunselor. Butiran sesi adalah seperti berikut:</p>
+
+            <div class="receipt-card">
+                <div class="receipt-row">
+                    <span class="lbl" data-i18n="receipt.ticket">Rujukan Tiket:</span>
+                    <span class="val bold" id="confTicket">T-0000</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="lbl" data-i18n="receipt.student">Nama Pelajar:</span>
+                    <span class="val" id="confName">Aqilah Husna</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="lbl" data-i18n="receipt.dateTime">Tarikh & Masa:</span>
+                    <span class="val bold receipt-date-time" id="confDateTime">July 7, 2026 at 10:00 AM</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="lbl" data-i18n="receipt.counselor">Kaunselor Bertugas:</span>
+                    <span class="val" id="confCounselor">Cikgu Ibrahim bin Putera</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="lbl" data-i18n="receipt.type">Jenis Konsultasi:</span>
+                    <span class="val" id="confType">Personal Guidance</span>
+                </div>
+                <div class="receipt-status-alert">
+                    <span class="status-indicator pending"></span>
+                    <span data-i18n="receipt.statusNote">Status: Menunggu semakan. Dalam keadaan tertentu, sesi boleh
+                        dipindahkan kepada kaunselor lain dan anda akan dimaklumkan.</span>
+                </div>
+                <div class="receipt-save-reminder">
+                    <strong id="receiptReminderTicket">T-0000</strong>
+                    <span data-i18n="receipt.saveReminder">Sila simpan resit ini atau ambil screenshot. Gunakan nombor
+                        tiket untuk semak sama ada tempahan anda menunggu, diluluskan, dibatalkan atau dipindahkan
+                        kepada kaunselor lain.</span>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn btn-primary" onclick="closeConfirmationModal()"
+                    data-i18n="modal.done">Selesai</button>
+                <button class="btn btn-outline" onclick="window.print()" data-i18n="modal.print">Cetak Tiket</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Detail Modal -->
+    <div class="modal-overlay" id="serviceDetailModal">
+        <div class="modal-card service-modal-card">
+            <button type="button" class="modal-close-btn" onclick="closeServiceDetailModal()"
+                aria-label="Tutup maklumat perkhidmatan" data-i18n-aria="serviceModal.close">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.4" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <span class="section-subtitle" id="serviceModalEyebrow">Perkhidmatan</span>
+            <h2 id="serviceModalTitle">Sokongan Akademik</h2>
+            <p class="modal-desc" id="serviceModalDesc">Maklumat perkhidmatan akan dipaparkan di sini.</p>
+            <div class="service-modal-meta">
+                <div>
+                    <span data-i18n="serviceModal.duration">Tempoh sesi</span>
+                    <strong id="serviceModalDuration">45-60 minit</strong>
+                </div>
+                <div>
+                    <span data-i18n="serviceModal.suitable">Sesuai untuk</span>
+                    <strong id="serviceModalSuitable">Pelajar TVETMARA Besut</strong>
+                </div>
+            </div>
+            <div class="service-modal-focus">
+                <h3 data-i18n="serviceModal.focusTitle">Fokus sesi</h3>
+                <ul id="serviceModalFocusList"></ul>
+            </div>
+            <button type="button" class="btn btn-primary btn-block" id="serviceModalBookBtn">
+                <span data-i18n="serviceModal.book">Tempah sesi ini</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Password Modal for Dashboard -->
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-card auth-card">
+            <div class="auth-icon">
+                <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+            </div>
+            <h3 data-i18n="auth.title">Pengesahan Portal Kaunselor</h3>
+            <p class="modal-desc" data-i18n="auth.desc">Masukkan kata laluan pentadbiran untuk mengakses fungsi
+                kaunselor.</p>
+            <form id="portalAuthForm" onsubmit="handlePortalAuth(event)">
+                <div class="form-group">
+                    <label data-i18n="auth.chooseAccount">Pilih akaun kaunselor</label>
+                    <div class="auth-account-list" id="authAccountList">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="portalPassword" data-i18n="auth.password">Kata Laluan</label>
+                    <div class="password-field">
+                        <input type="password" id="portalPassword" placeholder="Petunjuk: mara123"
+                            data-i18n-placeholder="auth.placeholder" required>
+                        <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility()"
+                            aria-label="Tunjuk kata laluan" data-i18n-aria="auth.showPassword">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="error-msg" id="authErrorMsg" data-i18n="auth.error">Kata laluan tidak sah. Sila cuba
+                        lagi.</span>
+                </div>
+                <div class="modal-buttons text-right">
+                    <button type="button" class="btn btn-outline" onclick="closePasswordModal()"
+                        data-i18n="auth.cancel">Batal</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="auth.signIn">Log Masuk</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo-area">
+                    <img src="images/logo.png" alt="TVETMARA Besut logo" class="brand-logo-img footer-logo-img">
+                    <span class="logo-title white" data-i18n="footer.brand">Unit Kaunseling dan Kerjaya</span>
+                </div>
+                <p class="brand-desc" data-i18n="footer.desc">Perkhidmatan kaunseling dan bimbingan kerjaya yang sulit,
+                    profesional dan mesra pelajar untuk warga TVETMARA Besut.</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer.hoursTitle">Waktu Operasi</h4>
+                <ul>
+                    <li data-i18n="footer.hours1">Ahad - Rabu: 8:00 pagi - 5:00 petang</li>
+                    <li data-i18n="footer.hours2">Khamis: 8:00 pagi - 3:30 petang</li>
+                    <li data-i18n="footer.hours3">Jumaat - Sabtu: Tutup</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer.contactTitle">Hubungi Kami</h4>
+                <ul>
+                    <li data-i18n="footer.address">Unit Kaunseling dan Kerjaya, IKM Besut</li>
+                    <li>Tel: +60 9-695 7233</li>
+                    <li>Email: counseling.besut@mara.gov.my</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p data-i18n-html="footer.copy">&copy; 2026 Unit Kaunseling dan Kerjaya, TVETMARA Besut. Hak cipta
+                terpelihara.</p>
+        </div>
+    </footer>
+
+    <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Kembali ke atas"
+        data-i18n-aria="backTop.aria">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.4" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <!-- App Scripts: separated by function so it is easier to edit later -->
+    <script src="js/data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/counselors.js"></script>
+    <script src="js/portal.js"></script>
+    <script src="js/availability.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+/* Design System & Variables */
+:root {
+    /* TVETMARA Besut inspired palette: official navy/blue with gentle red accents */
+    --hue-primary: 244;
+    --hue-accent-blue: 211;
+    --hue-accent-teal: 184;
+    --hue-accent-red: 356;
+
+    /* Light Theme Tokens */
+    --bg-app: hsl(var(--hue-primary), 38%, 98%);
+    --bg-card: hsla(0, 0%, 100%, 0.82);
+    --bg-card-hover: hsla(0, 0%, 100%, 0.96);
+    --border-color: hsla(var(--hue-primary), 22%, 86%, 0.72);
+    --border-accent: hsla(var(--hue-accent-blue), 78%, 42%, 0.22);
+    
+    --text-primary: hsl(var(--hue-primary), 42%, 15%);
+    --text-secondary: hsl(var(--hue-primary), 20%, 36%);
+    --text-light: hsl(var(--hue-primary), 13%, 50%);
+    
+    --primary: hsl(var(--hue-primary), 48%, 28%);
+    --primary-hover: hsl(var(--hue-primary), 54%, 22%);
+    --primary-light: hsl(var(--hue-accent-blue), 82%, 96%);
+    --brand-blue: hsl(var(--hue-accent-blue), 84%, 36%);
+    --brand-blue-light: hsl(var(--hue-accent-blue), 88%, 94%);
+    
+    --teal: hsl(var(--hue-accent-teal), 58%, 34%);
+    --teal-hover: hsl(var(--hue-accent-teal), 60%, 27%);
+    --teal-light: hsl(var(--hue-accent-teal), 55%, 93%);
+
+    --crimson: hsl(var(--hue-accent-red), 82%, 42%);
+    --crimson-hover: hsl(var(--hue-accent-red), 82%, 34%);
+    --crimson-light: hsl(var(--hue-accent-red), 76%, 96%);
+
+    --orange: hsl(35, 95%, 48%);
+    --orange-light: hsl(35, 90%, 94%);
+    
+    --white: #ffffff;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --glass-blur: blur(12px);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--hue-primary), 50%, 28%) 0%, hsl(var(--hue-accent-blue), 84%, 36%) 72%, hsl(var(--hue-accent-red), 82%, 45%) 100%);
+    --gradient-soft: linear-gradient(135deg, hsla(var(--hue-accent-blue), 85%, 94%, 0.9), hsla(var(--hue-accent-red), 80%, 97%, 0.65));
+    --gradient-gold: linear-gradient(135deg, hsl(38, 82%, 58%), hsl(16, 82%, 54%));
+    
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Theme overrides */
+.dark-theme {
+    --bg-app: hsl(var(--hue-primary), 34%, 14%);
+    --bg-card: hsla(var(--hue-primary), 30%, 19%, 0.86);
+    --bg-card-hover: hsla(var(--hue-primary), 30%, 23%, 0.95);
+    --border-color: hsla(var(--hue-primary), 18%, 34%, 0.68);
+    --border-accent: hsla(var(--hue-accent-blue), 80%, 66%, 0.24);
+    
+    --text-primary: hsl(var(--hue-primary), 20%, 94%);
+    --text-secondary: hsl(var(--hue-primary), 15%, 72%);
+    --text-light: hsl(var(--hue-primary), 10%, 62%);
+    
+    --primary: hsl(var(--hue-accent-blue), 82%, 66%);
+    --primary-hover: hsl(var(--hue-accent-blue), 86%, 73%);
+    --primary-light: hsla(var(--hue-accent-blue), 82%, 66%, 0.15);
+    --brand-blue: hsl(var(--hue-accent-blue), 82%, 62%);
+    --brand-blue-light: hsla(var(--hue-accent-blue), 82%, 62%, 0.15);
+    
+    --teal: hsl(var(--hue-accent-teal), 80%, 45%);
+    --teal-hover: hsl(var(--hue-accent-teal), 80%, 52%);
+    --teal-light: hsla(var(--hue-accent-teal), 80%, 45%, 0.15);
+
+    --crimson: hsl(var(--hue-accent-red), 85%, 60%);
+    --crimson-hover: hsl(var(--hue-accent-red), 85%, 68%);
+    --crimson-light: hsla(var(--hue-accent-red), 85%, 60%, 0.15);
+
+    --orange: hsl(35, 95%, 60%);
+    --orange-light: hsla(35, 95%, 60%, 0.15);
+    
+    --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.16);
+    --shadow-md: 0 12px 26px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 24px 46px rgba(0, 0, 0, 0.24);
+    
+    --gradient-hero: linear-gradient(135deg, hsl(var(--hue-primary), 50%, 20%) 0%, hsl(var(--hue-accent-blue), 78%, 36%) 76%, hsl(var(--hue-accent-red), 80%, 44%) 100%);
+    --gradient-soft: linear-gradient(135deg, hsla(var(--hue-accent-blue), 80%, 34%, 0.24), hsla(var(--hue-accent-red), 78%, 38%, 0.12));
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Background Blurs */
+.bg-blur {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.4;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+}
+
+.blur-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--brand-blue-light) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+}
+
+.blur-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--crimson-light) 0%, transparent 70%);
+    bottom: -200px;
+    left: -200px;
+}
+

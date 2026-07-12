@@ -1,0 +1,73 @@
+/* Footer Section styling */
+.app-footer {
+    background:
+        radial-gradient(circle at 94% 42%, hsla(var(--hue-accent-blue), 70%, 92%, 0.62), transparent 19%),
+        linear-gradient(180deg, var(--white), hsl(var(--hue-accent-blue), 78%, 98%));
+    color: var(--text-secondary);
+    padding: 46px 0 0;
+    border-top: 1px solid var(--border-color);
+    margin-top: 64px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-brand .logo-area {
+    min-width: 0;
+    gap: 16px;
+}
+
+.footer-logo-img {
+    height: 46px;
+    max-width: 190px;
+}
+
+.footer-brand .logo-title {
+    color: var(--primary);
+}
+
+.brand-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-links h4 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links li {
+    font-size: 0.9rem;
+}
+
+.footer-bottom {
+    width: 100%;
+    max-width: none;
+    background: linear-gradient(135deg, hsl(var(--hue-primary), 48%, 18%), hsl(var(--hue-accent-blue), 78%, 30%));
+    color: var(--white);
+    border-top: none;
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+

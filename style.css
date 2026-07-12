@@ -1,0 +1,12 @@
+/* Main stylesheet: edit the smaller files in css/ instead of this file. */
+@import url("css/base.css");
+@import url("css/layout.css");
+@import url("css/home.css");
+@import url("css/counselors.css");
+@import url("css/booking.css");
+@import url("css/resources.css");
+@import url("css/dashboard.css");
+@import url("css/footer.css");
+@import url("css/responsive.css");
+@import url("css/counselor-management.css");
+@import url("css/print.css");

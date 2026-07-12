@@ -1,0 +1,445 @@
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    html {
+        font-size: 15px;
+    }
+
+    .logo-icon {
+        width: 132px;
+    }
+
+    .logo-area {
+        min-width: 330px;
+    }
+
+    .header-tvet-logo {
+        height: 32px;
+    }
+
+    .header-mara-logo {
+        height: 50px;
+    }
+
+    .logo-title {
+        max-width: 180px;
+        font-size: 0.9rem;
+    }
+
+    .logo-subtitle {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        max-width: 860px;
+        gap: 36px;
+    }
+
+    .system-action-panel {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-ctas,
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        max-width: 620px;
+    }
+
+    .main-visual-card {
+        max-width: 720px;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 1100px) {
+    .booking-wrapper {
+        grid-template-columns: 1fr;
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 70px;
+    }
+
+    .mobile-menu-btn {
+        display: inline-flex;
+    }
+
+    .logo-area {
+        gap: 8px;
+        min-width: 0;
+    }
+
+    .logo-icon {
+        width: 112px;
+        height: 38px;
+        padding: 5px 8px;
+    }
+
+    .header-tvet-logo {
+        height: 30px;
+    }
+
+    .header-mara-logo {
+        height: 46px;
+    }
+
+    .logo-lockup-divider {
+        height: 28px;
+    }
+
+    .logo-title {
+        font-size: 0.82rem;
+        max-width: 150px;
+    }
+
+    .language-toggle {
+        padding: 2px;
+    }
+
+    .lang-btn {
+        min-width: 32px;
+        height: 28px;
+        font-size: 0.72rem;
+    }
+
+    .main-nav {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 16px;
+        right: 16px;
+        bottom: auto;
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 14px;
+        gap: 8px;
+        transform: translateY(-14px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform var(--transition-normal);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        box-shadow: 0 22px 50px rgba(23, 29, 70, 0.2);
+        z-index: 120;
+    }
+
+    .dark-theme .main-nav {
+        background-color: hsl(var(--hue-primary), 28%, 12%);
+    }
+
+    .main-nav.mobile-active {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        width: 100%;
+        text-align: left;
+        padding: 13px 16px;
+        background: var(--white);
+        border-radius: 12px;
+    }
+
+    .main-nav .nav-link:hover,
+    .main-nav .nav-link.active {
+        background: var(--white);
+        color: var(--primary);
+    }
+
+    .dark-theme .main-nav .nav-link,
+    .dark-theme .main-nav .nav-link:hover,
+    .dark-theme .main-nav .nav-link.active {
+        background: transparent;
+    }
+
+    .portal-toggle-btn {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 13px 16px;
+        font-size: 1rem;
+        background: var(--primary-light);
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding: 110px 0 54px;
+    }
+
+    .hero-container {
+        gap: 40px;
+        text-align: center;
+    }
+
+    .hero-ctas,
+    .hero-ctas .btn {
+        width: 100%;
+    }
+
+    .hero-stats {
+        width: 100%;
+        gap: 14px;
+    }
+
+    .system-action-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .system-action-card {
+        min-height: auto;
+        padding: 24px 20px;
+    }
+
+    .process-steps,
+    .form-stepper {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .form-stepper span::after {
+        display: none;
+    }
+
+    .stat-item {
+        justify-content: flex-start;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .hero-availability-card {
+        left: 24px;
+        top: 24px;
+        transform: none;
+        width: min(220px, calc(100% - 48px));
+    }
+
+    .card-quote {
+        left: 24px;
+        right: auto;
+        width: min(300px, calc(100% - 48px));
+        bottom: 24px;
+        padding: 12px 16px 12px 42px;
+    }
+
+    .quote-mark {
+        left: 14px;
+        top: 9px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-modal-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row.two-cols,
+    .request-type-switch,
+    .status-checker-grid,
+    .status-result-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-guide {
+        grid-template-columns: 1fr;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .dashboard-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .portal-utility-bar,
+    .portal-download-card {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-download-card {
+        display: grid;
+    }
+
+    .portal-download-actions {
+        justify-content: stretch;
+    }
+
+    .portal-download-actions .btn {
+        width: 100%;
+    }
+
+    .availability-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .availability-calendar-panel {
+        padding: 14px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .dashboard-actions {
+        justify-content: space-between;
+    }
+
+    .flex-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .table-filters {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .table-tools {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .table-tools .btn,
+    .table-tools .table-filters,
+    .general-appointments-card .btn {
+        width: 100%;
+    }
+
+    .table-tools .table-filters {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-stats {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .logo-icon {
+        width: 120px;
+    }
+
+    .logo-area {
+        min-width: 0;
+    }
+
+    .official-logo-group {
+        gap: 8px;
+    }
+
+    .header-tvet-logo {
+        height: 28px;
+    }
+
+    .header-mara-logo {
+        height: 42px;
+    }
+
+    .logo-lockup-divider {
+        height: 24px;
+        display: inline-block;
+    }
+
+    .hero-badge {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-title {
+        font-size: 2.55rem;
+    }
+
+    .hero-ctas {
+        flex-direction: column;
+    }
+
+    .hero-availability-card {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        width: 100%;
+        margin: 0 0 14px;
+    }
+
+    .card-quote {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    .main-visual-card {
+        aspect-ratio: auto;
+        padding: 12px;
+    }
+
+    .hero-scene-img {
+        height: 280px;
+    }
+
+    .success-modal-card {
+        padding: 22px;
+    }
+
+}
